@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+    <BehaviorTree ID="MainTree">
+        <Sequence name="RootSequence">
+            <!-- Navigate to room door -->
+            <MoveTowardsDoor name="move_to_room_door"/>
+            
+            <!-- Check if room door is closed and open if necessary -->
+            <Fallback name="handle_room_door">
+                <Inverter name="check_door_open">
+                    <IsDoorClosed name="is_room_door_closed"/>
+                </Inverter>
+                <OpenDoor name="open_room_door"/>
+            </Fallback>
+            
+            <!-- Enter the room -->
+            <EnterRoom name="enter_room"/>
+            
+            <!-- Navigate to fridge -->
+            <MoveTowardsFridge name="move_to_fridge"/>
+            
+            <!-- Check if fridge door is closed and open if necessary -->
+            <Fallback name="handle_fridge_door">
+                <Inverter name="check_fridge_open">
+                    <IsFridgeDoorClosed name="is_fridge_door_closed"/>
+                </Inverter>
+                <OpenFridgeDoor name="open_fridge_door"/>
+            </Fallback>
+            
+            <!-- Find and pick apple -->
+            <Sequence name="apple_operations">
+                <FindApple name="find_apple"/>
+                <PickApple name="pick_apple"/>
+            </Sequence>
+            
+            <!-- Close fridge door -->
+            <CloseFridgeDoor name="close_fridge_door"/>
+            
+            <!-- Navigate to room exit and exit -->
+            <Sequence name="exit_operations">
+                <MoveTowardsRoomExit name="move_to_room_exit"/>
+                <ExitRoom name="exit_room"/>
+                <CloseRoomDoor name="close_room_door"/>
+            </Sequence>
+        </Sequence>
+    </BehaviorTree>
+</root>
