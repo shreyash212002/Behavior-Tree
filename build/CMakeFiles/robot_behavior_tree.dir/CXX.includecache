@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shreyash/BT/robot_behavior_tree.cpp
+behaviortree_cpp/bt_factory.h
+-
+behaviortree_cpp/tree_node.h
+-
+iostream
+-
+chrono
+-
+thread
+-
+filesystem
+-
+
